@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matiullah | Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0052cc;
+            --accent: #f5f6fa;
+            --text: #222f3e;
+            --soft: #e9ecef;
+            --hover: #e3e8f0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--accent);
+            color: var(--text);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .profile-pic {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--soft);
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+        .main-info {
+            flex: 1;
+        }
+        .main-info h1 {
+            margin: 0 0 8px 0;
+            font-size: 2.1rem;
+            font-weight: 700;
+        }
+        .main-info .tagline {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .social-links a {
+            color: var(--primary);
+            margin-right: 14px;
+            font-size: 1.3rem;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #222f3e;
+        }
+        nav {
+            background: #fff;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding: 12px 0;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--hover);
+            color: var(--primary);
+        }
+        section {
+            margin-bottom: 48px;
+        }
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .about {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .project-card {
+            background: #fff;
+            flex: 1 1 350px;
+            min-width: 300px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .project-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 8px;
+            background: #e9ecef;
+        }
+        .project-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(0,82,204,0.08);
+        }
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .project-tags {
+            margin-bottom: 8px;
+        }
+        .project-tags span {
+            display: inline-block;
+            background: var(--hover);
+            color: var(--primary);
+            font-size: 0.9rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .skill {
+            background: var(--hover);
+            color: var(--primary);
+            border-radius: 16px;
+            padding: 6px 16px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .contact {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .cta-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,82,204,0.08);
+        }
+        .cta-btn:hover {
+            background: #003580;
+        }
+        footer {
+            text-align: center;
+            padding: 18px 0 8px 0;
+            color: var(--primary);
+            background: #fff;
+            border-top: 1px solid var(--soft);
+            font-size: 1rem;
+            margin-top: 24px;
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { padding: 12px; }
+            .projects { flex-direction: column; }
+        }
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .main-info h1 { font-size: 1.4rem; }
+            .nav-links { gap: 12px; font-size: 0.98rem; }
+            .project-card { min-width: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <img src="profile.jpg" alt="Profile Photo" class="profile-pic" />
+            <div class="main-info">
+                <h1>Matiullah</h1>
+                <div class="tagline">BS Data Science Student | Python & ML Enthusiast | Visualization Lover</div>
+                <div class="social-links">
+                    <a href="mailto:wisalwisal1300@gmail.com" title="Email"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/mati-ullah-332907289" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Matiullah8008" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/share/1BCxYDbmDy/?mibextid=qi2Omg" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                </div>
+            </div>
+        </header>
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>Hi, I'm Matiullah, a Data Science student from Pakistan. I specialize in data analysis, machine learning, and data visualization. I enjoy exploring intelligent systems and solving real-world problems using tools like Python, Orange, Tableau, and WEKA.</p>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+    <img src="https://placehold.co/400x120?text=Energy+Prediction" alt="Energy Prediction System" class="project-img" />
+    <div class="project-title">Energy Prediction System</div>
+    <div class="project-tags">
+        <span>Python</span><span>ML</span><span>Pandas</span>
+    </div>
+    <div>A machine learning model to predict energy usage in commercial buildings, helping optimize energy consumption and reduce costs.</div>
+</div>
+                <div class="project-card">
+    <img src="https://placehold.co/400x120?text=Multichat+System" alt="Multichat System" class="project-img" />
+    <div class="project-title">Multichat System</div>
+    <div class="project-tags">
+        <span>Python</span><span>Socket</span><span>Real-time</span>
+    </div>
+    <div>A real-time client-server messaging application built with Python, supporting multiple users and secure communication.</div>
+</div>
+                <div class="project-card">
+    <img src="https://placehold.co/400x120?text=Cricket+Scoreboard" alt="Cricket Scoreboard" class="project-img" />
+    <div class="project-title">Cricket Scoreboard</div>
+    <div class="project-tags">
+        <span>HTML</span><span>JavaScript</span><span>GitHub Pages</span>
+    </div>
+    <div>A live cricket scoreboard website deployed on GitHub Pages, providing real-time updates and interactive features for cricket fans.</div>
+</div>
+                <div class="project-card">
+    <img src="https://placehold.co/400x120?text=Healthcare+Warehouse" alt="Healthcare Data Warehouse" class="project-img" />
+    <div class="project-title">Healthcare Data Warehouse</div>
+    <div class="project-tags">
+        <span>SQL</span><span>NoSQL</span><span>MongoDB</span>
+    </div>
+    <div>Integration of structured patient and wearable device data using SQL and NoSQL databases for comprehensive healthcare analytics.</div>
+</div>
+            </div>
+            <button class="cta-btn" onclick="window.location.href='#contact'">Contact me</button>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill">Python</div>
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Keras</div>
+                <div class="skill">Pandas</div>
+                <div class="skill">NumPy</div>
+                <div class="skill">Tableau</div>
+                <div class="skill">Orange</div>
+                <div class="skill">WEKA</div>
+                <div class="skill">MySQL</div>
+                <div class="skill">MongoDB</div>
+                <div class="skill">Git</div>
+                <div class="skill">GitHub</div>
+                <div class="skill">Google Colab</div>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <div><i class="fa fa-envelope"></i> <a href="mailto:wisalwisal1300@gmail.com">wisalwisal1300@gmail.com</a></div>
+            <div>
+                <a href="https://www.linkedin.com/in/mati-ullah-332907289" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+                <a href="https://github.com/Matiullah8008" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+                <a href="https://www.facebook.com/share/1BCxYDbmDy/?mibextid=qi2Omg" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
+            </div>
+            <button class="cta-btn" onclick="window.location.href='mailto:wisalwisal1300@gmail.com'">Send Email</button>
+        </section>
+    </div>
+    <footer>
+        <div>Feel free to reach out! &middot; <a href="mailto:wisalwisal1300@gmail.com">wisalwisal1300@gmail.com</a></div>
+        <div>Thank you for visiting my portfolio.</div>
+    </footer>
+    <script>
+        // Smooth scroll and active nav
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        window.addEventListener('scroll', () => {
+            let fromTop = window.scrollY + 80;
+            navLinks.forEach(link => {
+                let section = document.querySelector(link.hash);
+                if (
+                    section.offsetTop <= fromTop &&
+                    section.offsetTop + section.offsetHeight > fromTop
+                ) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
